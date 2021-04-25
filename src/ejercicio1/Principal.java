@@ -4,21 +4,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.TreeSet;
 
 import ejercicio1.Persona;
 
 
-public class principal {
+public class Principal {
 
 	public static void main(String[] args) {
+		//ejercicio B hecho por pavi
+		
+		TreeSet<Persona> listaPersonas= new TreeSet<Persona>();
+		
+		
+		
+		
 		//punto B
 		FileReader entrada;
-		ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
+//		ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
 		try {
 			entrada = new FileReader("./archivos/Personas.txt");
 			BufferedReader miBuffer = new BufferedReader(entrada);
-
+			
 		   String linea = "";
 			while (linea != null) {
 				linea = miBuffer.readLine();
@@ -60,10 +69,10 @@ public class principal {
 		{
 			System.out.println("Listado de personas en el archivo: ");
 
-			ListIterator<Persona> it = listaPersonas.listIterator();
+			Iterator<Persona> it = listaPersonas.iterator();
 			while (it.hasNext()) {
 				Persona persona = it.next();
-				it.remove();
+//				it.remove();
 				System.out.println(persona.toString());
 			}
 		}
