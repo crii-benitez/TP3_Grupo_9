@@ -13,20 +13,20 @@ import ejercicio1.Persona;
 
 public class Principal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		//ejercicio B hecho por pavi
 		
 		TreeSet<Persona> listaPersonas= new TreeSet<Persona>();
-		
-		
-		
-		
+		Archivo file = new Archivo();
+		String ruta = "./archivos/Personas.txt";
+		BufferedReader miBuffer = file.leeArchivo(ruta);
+	
 		//punto B
-		FileReader entrada;
+		//FileReader entrada;
 //		ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
 		try {
-			entrada = new FileReader("./archivos/Personas.txt");
-			BufferedReader miBuffer = new BufferedReader(entrada);
+			//entrada = new FileReader("./archivos/Personas.txt");
+			//BufferedReader miBuffer = new BufferedReader(entrada);
 			
 		   String linea = "";
 			while (linea != null) {
@@ -35,7 +35,7 @@ public class Principal {
 				//String separador = Pattern.quote("-");
 				String[] parts = new String[50];
 					parts=	linea.split("-");
-				//System.out.println(parts[0]+parts[1]+parts[2]);
+			//	System.out.println(parts[0]+parts[1]+parts[2]);
 				int dni_ =Integer.parseInt(parts[2]);
 				if (String.valueOf(dni_).length()==7 || String.valueOf(dni_).length()==8)
 				{
@@ -48,14 +48,15 @@ public class Principal {
 				}
 				//System.out.println(linea);
 			}
-			miBuffer.close();
-			entrada.close();
+			
+	//		entrada.close();
 			
 
 			
 
-		} catch (IOException e) {
-			System.out.println("No se encontro el archivo");
+		}
+		catch (IOException e) {
+			System.out.println(e.getMessage() + "Leo");
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -76,7 +77,7 @@ public class Principal {
 				System.out.println(persona.toString());
 			}
 		}
-
+		miBuffer.close();
 		
 	}
 	

@@ -15,6 +15,8 @@ public class Archivo {
 	//
 	// OUTPUT:
 	// true/false
+	
+	
 	public boolean existeArchivo(String ruta) {
 		File archivo = new File(ruta);
 		if (archivo.exists())
@@ -28,6 +30,10 @@ public class Archivo {
 	// append(boolean)
 	// frase(String)
 	//
+
+	public Archivo() {
+		
+	}
 
 	public void escribeFraseArchivo(String ruta, boolean append, String frase) {
 		FileWriter entrada;
@@ -46,19 +52,26 @@ public class Archivo {
 	// INPUTS:
 	// ruta(String)
 	//
-	public void leeArchivo(String ruta) {
+	public BufferedReader leeArchivo(String ruta) throws IOException {
 		FileReader entrada;
 		try {
 			entrada = new FileReader(ruta);
 			BufferedReader miBuffer = new BufferedReader(entrada);
 			String linea = "";
 			while (linea != null) {
-				System.out.println(linea);
+		//		System.out.println(linea);
 				linea = miBuffer.readLine();
 			}
-			entrada.close();
+			
+			return miBuffer;
+			
+			
 		} catch (IOException e) {
 			System.out.println("No se encontro el archivo en la ruta: " + ruta);
 		}
+		finally{
+			//entrada.close();
+		}
+		return null;
 	}
 }
