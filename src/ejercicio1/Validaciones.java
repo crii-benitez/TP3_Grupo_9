@@ -1,7 +1,7 @@
 package ejercicio1;
 
 public class Validaciones {
-	public static boolean verificarDniInvalido(String dni) throws DniInvalido{
+	public static boolean verificarDniInvalido(String dni) throws DniInvalido, NumberFormatException {
 		// // validamos que sólo tengo 8 dígitos entre los 8 primeros caracteres y que
 		// la letra introducida es igual a la de la ecuación
 		// // Llamamos a los métodos privados de la clase soloNumeros() y letraDNI()
@@ -11,17 +11,21 @@ public class Validaciones {
 		// else {
 		// return false;
 		// }
-
-		int dni_ = Integer.parseInt(dni);
-		if (String.valueOf(dni_).length() == 7 || String.valueOf(dni_).length() == 8) {
-			return true;
-		} else {
-			throw new DniInvalido(); 
+		try {
+			int dni_ = Integer.parseInt(dni);
+			if (String.valueOf(dni_).length() == 7 || String.valueOf(dni_).length() == 8)
+				return true;
+		} catch (DniInvalido e) {
+			throw new DniInvalido();
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException();
 		}
+		throw new 
 	}
-	
-//este metodo lo discontinuamos por la solucion aplicada por german para chequear el dni
-	
+
+	// este metodo lo discontinuamos por la solucion aplicada por german para
+	// chequear el dni
+
 	private static boolean soloNumeros(String dni) {
 
 		int i, j = 0;

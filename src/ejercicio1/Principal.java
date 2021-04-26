@@ -1,12 +1,10 @@
 package ejercicio1;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.TreeSet;
 
 import ejercicio1.Persona;
@@ -28,7 +26,8 @@ public class Principal {
 		Iterator<String> it = listaArchivo.iterator();
 		while (it.hasNext()) {
 			Persona persona = new Persona();
-			String txt = it.toString();
+			
+			String txt = it.next();
 			String[] parts = txt.split("-");
 			persona.setNombre(parts[0]);
 			persona.setApellido(parts[1]);

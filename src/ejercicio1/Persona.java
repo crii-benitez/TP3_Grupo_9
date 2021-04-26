@@ -1,4 +1,7 @@
 package ejercicio1;
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
+import ejercicio1.Validaciones;
 
 
 public class Persona  implements Comparable<Persona> {
@@ -8,13 +11,13 @@ public class Persona  implements Comparable<Persona> {
 	@Override
 	public int compareTo(Persona arg0) {
 		//ORDENAMIENTO por DNI de > a <
-		if(arg0.dni == this.dni)
-			return 0;
-		
-		if (dni<this.dni)
-		{
-			return 1;
-		}		
+//		if(arg0.getDni() == this.dni)
+//			return 0;
+//		
+//		if (arg0.getDni()<this.dni)
+//		{
+//			return 1;
+//		}		
 		return -1;
 	}
 
@@ -24,14 +27,14 @@ public class Persona  implements Comparable<Persona> {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
-		nombre = nombre;
+		this.nombre = nombre;
 	}
 	public Persona() {}
-	public Persona(String nombre, String apellido, int dni) {
+	public Persona(String nombre, String apellido, String dni) {
 		super();
-		nombre = nombre;
-		apellido = apellido;
-		dni = dni;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
 	}
 	public String getApellido() {
 		return apellido;
@@ -43,7 +46,13 @@ public class Persona  implements Comparable<Persona> {
 		return this.dni;
 	}
 	public void setDni(String dni) {
-		this.dni = dni;
+		try {
+			if(Validaciones.verificarDniInvalido(dni))
+				this.dni = dni;
+		} catch (DniInvalido e) {
+			//e.printStackTrace();
+			e.getMessage();
+		}
 	}
 	@Override
 	public String toString() {
@@ -55,9 +64,9 @@ public class Persona  implements Comparable<Persona> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-		result = prime * result + dni;
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+//		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
+//		result = prime * result + dni;
+//		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
 
