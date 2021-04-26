@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
+import ejercicio1.Archivo;
 import ejercicio1.Persona;
 
 public class Principal {
@@ -54,6 +55,15 @@ public class Principal {
 		    	Validaciones.verificarDniInvalido(valor2);
 		    	listaPersonas.add(persona);
 		    	System.out.println("grabo");
+		    	//punto c
+				if (Archivo.existeArchivo("./archivos/Resultado.txt")==false)
+				{
+					Archivo.escribeArchivo("./archivos/Resultado.txt",true,valor + " "+ valor1 + " " + valor2);
+				}
+				else
+				{
+					Archivo.escribeArchivo("./archivos/Resultado.txt",true,valor + " "+ valor1 + " " + valor2);
+				}
 		    }
 		    catch (Exception e) {
 		    	
@@ -64,6 +74,7 @@ public class Principal {
 		//	listaPersonas.add(persona);
 		}
 		System.out.println("break");
+		
 		// punto B
 		// FileReader entrada;
 		// ArrayList<Persona> listaPersonas = new ArrayList<Persona>();

@@ -14,7 +14,7 @@ public class Archivo {
 	private String ruta;
 	private boolean append;
 	private static BufferedReader bufferReader;
-	private BufferedWriter bufferWriter;
+	private static BufferedWriter bufferWriter;
 
 	public Archivo() {
 	}
@@ -26,7 +26,7 @@ public class Archivo {
 	// OUTPUT:
 	// true/false
 
-	public boolean existeArchivo(String ruta) {
+	public static boolean existeArchivo(String ruta) {
 		File archivo = new File(ruta);
 		if (archivo.exists())
 			return true;
@@ -64,7 +64,7 @@ public class Archivo {
 		this.append = append;
 	}
 
-	public void escribeArchivo(String txtLinea) {
+	public static void escribeArchivo(String ruta, boolean append,String txtLinea) {
 		FileWriter entrada;
 		bufferWriter = null;
 		try {
