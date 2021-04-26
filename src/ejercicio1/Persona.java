@@ -2,16 +2,16 @@ package ejercicio1;
 
 
 public class Persona  implements Comparable<Persona> {
-	String Nombre;
-	String Apellido;
-	int Dni;
+	private String nombre;
+	private String apellido;
+	private String dni;
 	@Override
 	public int compareTo(Persona arg0) {
 		//ORDENAMIENTO por DNI de > a <
-		if(arg0.Dni == this.Dni)
+		if(arg0.dni == this.dni)
 			return 0;
 		
-		if (Dni<this.Dni)
+		if (dni<this.dni)
 		{
 			return 1;
 		}		
@@ -21,33 +21,33 @@ public class Persona  implements Comparable<Persona> {
 	
 	//Getters and Setters
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		nombre = nombre;
 	}
 	public Persona() {}
 	public Persona(String nombre, String apellido, int dni) {
 		super();
-		Nombre = nombre;
-		Apellido = apellido;
-		Dni = dni;
+		nombre = nombre;
+		apellido = apellido;
+		dni = dni;
 	}
 	public String getApellido() {
-		return Apellido;
+		return apellido;
 	}
 	public void setApellido(String apellido) {
-		Apellido = apellido;
+		this.apellido = apellido;
 	}
-	public int getDni() {
-		return Dni;
+	public String getDni() {
+		return this.dni;
 	}
-	public void setDni(int dni) {
-		Dni = dni;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	@Override
 	public String toString() {
-		return "Persona [Nombre=" + Nombre + ", Apellido=" + Apellido + ", Dni=" + Dni + "]";
+		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
 	}
 
 
@@ -55,9 +55,9 @@ public class Persona  implements Comparable<Persona> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Apellido == null) ? 0 : Apellido.hashCode());
-		result = prime * result + Dni;
-		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
+		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
+		result = prime * result + dni;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
 
@@ -71,17 +71,17 @@ public class Persona  implements Comparable<Persona> {
 		if (getClass() != obj.getClass())
 			return false;
 		Persona other = (Persona) obj;
-		if (Apellido == null) {
-			if (other.Apellido != null)
+		if (apellido == null) {
+			if (other.apellido != null)
 				return false;
-		} else if (!Apellido.equals(other.Apellido))
+		} else if (!apellido.equals(other.apellido))
 			return false;
-		if (Dni != other.Dni)
+		if (dni != other.dni)
 			return false;
-		if (Nombre == null) {
-			if (other.Nombre != null)
+		if (nombre == null) {
+			if (other.nombre != null)
 				return false;
-		} else if (!Nombre.equals(other.Nombre))
+		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
 	}

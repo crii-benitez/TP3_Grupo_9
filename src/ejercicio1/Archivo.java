@@ -4,10 +4,20 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 
 public class Archivo {
+
+	private String ruta;
+	private boolean append;
+	private static BufferedReader bufferReader;
+	private BufferedWriter bufferWriter;
+
+	public Archivo() {
+	}
 
 	// método que consulta la existencia de un archivo.
 	// INPUTS:
@@ -15,8 +25,7 @@ public class Archivo {
 	//
 	// OUTPUT:
 	// true/false
-	
-	
+
 	public boolean existeArchivo(String ruta) {
 		File archivo = new File(ruta);
 		if (archivo.exists())
@@ -31,17 +40,14 @@ public class Archivo {
 	// frase(String)
 	//
 
-	public Archivo() {
-		
-	}
-
-	public void escribeFraseArchivo(String ruta, boolean append, String frase) {
+	public void escribeArchivo(String txtLinea) {
 		FileWriter entrada;
+		bufferWriter = null;
 		try {
 			entrada = new FileWriter(ruta, append);
-			BufferedWriter miBuffer = new BufferedWriter(entrada);
-			miBuffer.write(frase);
-			miBuffer.close();
+			bufferWriter = new BufferedWriter(entrada);
+			bufferWriter.write(txtLinea);
+			bufferWriter.close();
 			entrada.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,25 +58,27 @@ public class Archivo {
 	// INPUTS:
 	// ruta(String)
 	//
-	public BufferedReader leeArchivo(String ruta) throws IOException {
+	public static List<String> leerArchivo(String ruta) {
+		List<String> lista = new ArrayList<>();
 		FileReader entrada;
+		bufferReader = null;
+		
 		try {
 			entrada = new FileReader(ruta);
-			BufferedReader miBuffer = new BufferedReader(entrada);
-			String linea = "";
-			while (linea != null) {
-		//		System.out.println(linea);
-				linea = miBuffer.readLine();
+			bufferReader = new BufferedReader(entrada);
+			String txtItem = "";
+
+			while (txtItem != null) {
+				txtItem = bufferReader.readLine();
+				lista.add(txtItem);
 			}
 			
-			return miBuffer;
-			
-			
+			entrada.close();
+			bufferReader.close();
+			return lista;
+		
 		} catch (IOException e) {
 			System.out.println("No se encontro el archivo en la ruta: " + ruta);
-		}
-		finally{
-			//entrada.close();
 		}
 		return null;
 	}
