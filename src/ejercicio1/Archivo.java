@@ -33,12 +33,36 @@ public class Archivo {
 		return false;
 	}
 
+	
+	
+	public Archivo(String ruta, boolean append) {
+		super();
+		this.ruta = ruta;
+		this.append = append;
+	}
+
 	// método que escribe un archivo o lo actualiza dependiendo de sus parametros.
 	// INPUTS:
 	// ruta(String)
 	// append(boolean)
 	// frase(String)
 	//
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public boolean isAppend() {
+		return append;
+	}
+
+	public void setAppend(boolean append) {
+		this.append = append;
+	}
 
 	public void escribeArchivo(String txtLinea) {
 		FileWriter entrada;
@@ -58,21 +82,22 @@ public class Archivo {
 	// INPUTS:
 	// ruta(String)
 	//
-	public static List<String> leerArchivo(String ruta) {
-		List<String> lista = new ArrayList<>();
+	public static ArrayList<String> leerArchivo(String ruta) {
+		ArrayList<String> lista = new ArrayList<>();
 		FileReader entrada;
 		bufferReader = null;
 		
-		try {
+		try {	
 			entrada = new FileReader(ruta);
 			bufferReader = new BufferedReader(entrada);
 			String txtItem = "";
 
-			while (txtItem != null) {
+			do {
 				txtItem = bufferReader.readLine();
 				lista.add(txtItem);
 			}
-			
+			//Chequear por que lanza la excepcion java.lang.NullPointerException
+			while (txtItem != null);
 			entrada.close();
 			bufferReader.close();
 			return lista;

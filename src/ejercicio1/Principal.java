@@ -3,6 +3,7 @@ package ejercicio1;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
@@ -21,20 +22,48 @@ public class Principal {
 		// función verificarDniInvalido para validar que el dni sea correcto)
 
 		TreeSet<Persona> listaPersonas = new TreeSet<Persona>();
-		List<String> listaArchivo = new ArrayList<>();
+		
+		
+		ArrayList<String> listaArchivo = new ArrayList<String>();
 		listaArchivo = Archivo.leerArchivo("./archivos/Personas.txt");
 		Iterator<String> it = listaArchivo.iterator();
 		while (it.hasNext()) {
 			Persona persona = new Persona();
 			
 			String txt = it.next();
+			//System.out.println(txt);
+			
 			String[] parts = txt.split("-");
-			persona.setNombre(parts[0]);
-			persona.setApellido(parts[1]);
-			persona.setDni(parts[2]); 
-			listaPersonas.add(persona);
-		}
 
+			
+			String valor = "";
+			String valor1 = "";
+			String valor2 = "";
+			valor = parts[0];
+			valor1 = parts[1];
+			valor2 = parts[2];
+			
+			System.out.println(valor + " "+ valor1 + " " + valor2);
+			
+			
+			
+			persona.setNombre(valor);
+			persona.setApellido(valor1);
+		    persona.setDni(valor2); 
+		    try {
+		    	Validaciones.verificarDniInvalido(valor2);
+		    	listaPersonas.add(persona);
+		    	System.out.println("grabo");
+		    }
+		    catch (Exception e) {
+		    	
+		    	
+		    	System.out.println("no grabo");
+			}
+
+		//	listaPersonas.add(persona);
+		}
+		System.out.println("break");
 		// punto B
 		// FileReader entrada;
 		// ArrayList<Persona> listaPersonas = new ArrayList<Persona>();

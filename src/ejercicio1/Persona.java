@@ -26,9 +26,11 @@ public class Persona  implements Comparable<Persona> {
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 	public Persona() {}
 	public Persona(String nombre, String apellido, String dni) {
 		super();
@@ -36,29 +38,33 @@ public class Persona  implements Comparable<Persona> {
 		this.apellido = apellido;
 		this.dni = dni;
 	}
+	
 	public String getApellido() {
 		return apellido;
 	}
+	
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
 	public String getDni() {
 		return this.dni;
 	}
+	
 	public void setDni(String dni) {
 		try {
 			if(Validaciones.verificarDniInvalido(dni))
 				this.dni = dni;
-		} catch (DniInvalido e) {
+		} catch (DniInvalidoException e) {
 			//e.printStackTrace();
 			e.getMessage();
 		}
 	}
+	
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
 	}
-
 
 	@Override
 	public int hashCode() {
