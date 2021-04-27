@@ -1,81 +1,67 @@
 package ejercicio1;
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import ejercicio1.Validaciones;
 
-
-public class Persona  implements Comparable<Persona> {
+public class Persona implements Comparable<Persona> {
 	private String nombre;
 	private String apellido;
 	private String dni;
+
 	@Override
 	public int compareTo(Persona arg0) {
-		//ORDENAMIENTO por DNI de > a <
-//		if(arg0.getDni() == this.dni)
-//			return 0;
-//		
-//		if (arg0.getDni()<this.dni)
-//		{
-//			return 1;
-//		}		
-		return -1;
+		int dniThis = Integer.parseInt(this.dni);
+		int dniArg0 = Integer.parseInt(arg0.dni);
+		if (dniThis == dniArg0)
+			return 0;
+		else if (dniThis < dniArg0)
+			return 1;
+		else
+			return -1;
 	}
 
-	
-	//Getters and Setters
+	// Getters and Setters
 	public String getNombre() {
 		return nombre;
 	}
-	
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public Persona() {}
+
+	public Persona() {
+	}
+
 	public Persona(String nombre, String apellido, String dni) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 	}
-	
+
 	public String getApellido() {
 		return apellido;
 	}
-	
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
+
 	public String getDni() {
 		return this.dni;
 	}
-	
+
 	public void setDni(String dni) {
 		try {
-			if(Validaciones.verificarDniInvalido(dni))
+			if (Validaciones.verificarDniInvalido(dni))
 				this.dni = dni;
 		} catch (DniInvalidoException e) {
-			//e.printStackTrace();
 			e.getMessage();
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-//		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-//		result = prime * result + dni;
-//		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		return result;
-	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -100,6 +86,5 @@ public class Persona  implements Comparable<Persona> {
 			return false;
 		return true;
 	}
-	
 
 }
