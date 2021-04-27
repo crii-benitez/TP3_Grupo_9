@@ -29,7 +29,7 @@ public class Principal {
 			valor = parts[0];
 			valor1 = parts[1];
 			valor2 = parts[2];
-
+ 
 			persona.setNombre(valor);
 			persona.setApellido(valor1);
 			persona.setDni(valor2);
