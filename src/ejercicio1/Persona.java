@@ -8,14 +8,7 @@ public class Persona implements Comparable<Persona> {
 
 	@Override
 	public int compareTo(Persona arg0) {
-		int dniThis = Integer.parseInt(this.dni);
-		int dniArg0 = Integer.parseInt(arg0.dni);
-		if (dniThis == dniArg0)
-			return 0;
-		else if (dniThis < dniArg0)
-			return 1;
-		else
-			return -1;
+		return this.apellido.compareTo(arg0.apellido);
 	}
 
 	// Getters and Setters
@@ -60,7 +53,7 @@ public class Persona implements Comparable<Persona> {
 
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
+		return nombre + "-" + apellido + "-" + dni;
 	}
 
 	@Override

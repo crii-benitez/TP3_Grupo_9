@@ -93,7 +93,8 @@ public class Archivo {
 			String txtItem = "";
 
 			while ((txtItem = bufferReader.readLine()) != null) {
-				lista.add(txtItem);
+				if(txtItem.isEmpty() == false)
+					lista.add(txtItem);
 			}
 			entrada.close();
 			bufferReader.close();
