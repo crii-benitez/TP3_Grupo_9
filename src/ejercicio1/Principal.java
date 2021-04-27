@@ -39,7 +39,7 @@ public class Principal {
 				Validaciones.verificarDniInvalido(valor2);
 				listaPersonas.add(persona);
 				
-				if (Archivo.existeArchivo("./archivos/Resultado.txt") == false) {
+				if (Archivo.existeArchivo("./archivos/Resultado.txt") == true) {
 					Archivo.escribeArchivo("./archivos/Resultado.txt", true, valor + " " + valor1 + " " + valor2 + "\n");
 				} else {
 					Archivo.escribeArchivo("./archivos/Resultado.txt", false, valor + " " + valor1 + " " + valor2 + "\n");

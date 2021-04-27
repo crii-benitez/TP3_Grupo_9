@@ -92,12 +92,9 @@ public class Archivo {
 			bufferReader = new BufferedReader(entrada);
 			String txtItem = "";
 
-			do {
-				txtItem = bufferReader.readLine();
+			while ((txtItem = bufferReader.readLine()) != null) {
 				lista.add(txtItem);
 			}
-			//Chequear por que lanza la excepcion java.lang.NullPointerException
-			while (txtItem != null);
 			entrada.close();
 			bufferReader.close();
 			return lista;
