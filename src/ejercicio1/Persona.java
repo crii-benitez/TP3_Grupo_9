@@ -42,15 +42,12 @@ public class Persona implements Comparable<Persona> {
 		return this.dni;
 	}
 
-	public void setDni(String dni) {
-		try {
-			if (Validaciones.verificarDniInvalido(dni))
-				this.dni = dni;
-		} catch (DniInvalidoException e) {
-			e.getMessage();
-		}
+	public void setDni(String dni) throws DniInvalidoException {
+		if (Validaciones.verificarDniInvalido(dni))
+			this.dni = dni;
+		else
+			throw new DniInvalidoException();
 	}
-
 	@Override
 	public String toString() {
 		return nombre + "-" + apellido + "-" + dni;

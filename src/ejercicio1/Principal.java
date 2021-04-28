@@ -36,15 +36,15 @@ public class Principal {
 
 			persona.setNombre(valor);
 			persona.setApellido(valor1);
-			persona.setDni(valor2);
 			try {
-				Validaciones.verificarDniInvalido(valor2);
+				persona.setDni(valor2);
+//				Validaciones.verificarDniInvalido(valor2);
 				listaPersonas.add(persona);
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("error en control de datos");
+				e.getMessage();
+//				System.out.println("error en control de datos");
 			}
-
 		}
 
 		// Punto C
